@@ -296,8 +296,8 @@ function compile(command, info, args, gdb) {
         addError(stderr.replace(/\n/g, "<br/>"));
 
       if (atom.config.get("gpp-compiler.addCompilingErr")) {
-        fs.writeFile(path.join(info.dir, "compiling_error.txt"), stderr, function(err) {
-  console.error(err);
+        fs.writeFile(path.join(info.dir, "compiling_error.txt"), stderr, function(err, result) {
+        if(err) console.log('error', err);
 });
       }
     } else {
